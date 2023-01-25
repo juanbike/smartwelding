@@ -1,4 +1,4 @@
-import { Role } from "../../model/role.enum";
+import { Role } from "../model/role.enum";
 
 export class UserDto {
     userId: number;

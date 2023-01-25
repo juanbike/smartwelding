@@ -74,7 +74,7 @@ findOne(id: string) {
 async getEmployee(employeeId: string): Promise<EmployeesDocument> {
   const existingEmployee = await     this.employeeModel.findById(employeeId).exec();
   if (existingEmployee) {
-   throw new NotFoundException(`Student #${employeeId} not found`);
+   throw new NotFoundException(`Employee #${employeeId} not found`);
   }
   return existingEmployee;
 }
