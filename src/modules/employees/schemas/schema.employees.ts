@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+
 import { Prop, Schema } from "@nestjs/mongoose";
 import { SchemaFactory } from "@nestjs/mongoose/dist";
 import { Document } from "mongoose";

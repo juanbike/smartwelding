@@ -1,7 +1,10 @@
+/* eslint-disable prettier/prettier */
+
 import { Controller, Get, Post, Body, Put, Param, Delete, Res, HttpStatus } from '@nestjs/common';
 import { EmployeesService } from './employees.service';
 import { CreateEmployeeDto } from './dto/create-employee.dto';
 import { UpdateEmployeeDto } from './dto/update-employee.dto';
+import { HttpException } from '@nestjs/common/exceptions';
 
 @Controller('employees')
 export class EmployeesController {
@@ -64,12 +67,12 @@ try {
 @Get('/:id')
 async getEmployee(@Res() response, @Param('id') employeeId: string) {
  try {
-    const existingEmployee = await
-this.employeesService.getEmployee(employeeId);
+    const existingEmployee = await this.employeesService.getEmployee(employeeId);
     return response.status(HttpStatus.OK).json({
     message: 'Employee found successfully',existingEmployee,});
  } catch (err) {
-   return response.status(err.status).json(err.response);
+  throw new HttpException('Employee do not exist', HttpStatus.NOT_FOUND);
+  //return response.status(err.status).json(err.response);
  }
 }
 

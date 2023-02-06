@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
@@ -73,7 +75,7 @@ findOne(id: string) {
 
 async getEmployee(employeeId: string): Promise<EmployeesDocument> {
   const existingEmployee = await     this.employeeModel.findById(employeeId).exec();
-  if (existingEmployee) {
+  if (!existingEmployee) {
    throw new NotFoundException(`Employee #${employeeId} not found`);
   }
   return existingEmployee;
